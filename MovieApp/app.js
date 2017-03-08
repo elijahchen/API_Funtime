@@ -6,8 +6,8 @@ app.set("view engine", "ejs");
 app.get("/results", function (req, res) {
     request("http://www.omdbapi.com/?s=california", function (error, response, body) {
         if(!error && response.statusCode == 200){
-            var results = JSON.parse(body);
-            res.render("results");
+            var data = JSON.parse(body);
+            res.render("results", {data: data});
         }
     });
 });
@@ -21,5 +21,5 @@ app.get("*", function (req, res) {
 });
 
 app.listen(3000, process.env.IP, function () {
-    console.log("Process has started!")
+    console.log("Process has started!");
 });
