@@ -4,7 +4,7 @@ var request = require("request");
 app.set("view engine", "ejs");
 
 app.get("/results", function (req, res) {
-    request("http://www.omdbapi.com/?s=california", function (error, response, body) {
+    request("http://www.omdbapi.com/?s=idaho", function (error, response, body) {
         if(!error && response.statusCode == 200){
             var data = JSON.parse(body);
             res.render("results", {data: data});
@@ -13,7 +13,7 @@ app.get("/results", function (req, res) {
 });
 
 app.get("/", function (req, res) {
-    res.send("HOME");
+    res.render("search");
 });
 
 app.get("*", function (req, res) {
